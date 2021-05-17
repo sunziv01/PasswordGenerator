@@ -1,0 +1,47 @@
+import random
+import string
+
+print('Hello, Welcome to Password generator!')
+
+lower = string.ascii_lowercase
+upper = string.ascii_uppercase
+num = string.digits
+symbols = string.punctuation
+bothcase = lower + upper
+numsym = num + symbols
+all = lower + upper + num + symbols
+
+passlen = int(input('\nEnter the length of password: '))
+numAsym = input("Do you want to include Numbers & Special Symbols? Y/N or y/n? ")
+
+if (numAsym=="Y" or numAsym=="y"):
+    #print("Choosed Number and symbbols")
+    charlen = int(input('\nHow many Alphabetical characters: '))
+    NandSpass = "".join(random.sample(numsym,(passlen-charlen)))
+    #print(NandSpass)
+
+elif(numAsym=="N" or numAsym=="n"):
+    charlen = passlen
+    NandSpass= None
+
+chcase = input("Uppercase (U or u) Lowercase (L or l) Both (B or b) ")
+
+if (chcase=='U' or chcase=='u'):
+    #print("Upper Case")
+    charpass = "".join(random.sample(upper,charlen))
+    #print(charpass)
+
+elif (chcase=='L' or chcase=='l'):
+    #print("Lower Case")
+    charpass = "".join(random.sample(lower,charlen))
+    #print(charpass)
+
+elif (chcase=='B' or chcase=='b'):
+    #print("Both Case")
+    charpass = "".join(random.sample(bothcase,charlen))
+    #print(charpass)
+
+password = charpass + NandSpass
+password = "".join(random.sample(password,passlen ))
+
+print(password)
